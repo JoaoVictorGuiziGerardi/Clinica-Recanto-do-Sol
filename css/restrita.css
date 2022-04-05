@@ -1,0 +1,124 @@
+html, body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    margin: 0;
+    font-family: "Helvetica-Neue", Arial, Helvetica, sans-serif;
+
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-variant: small-caps;
+
+    color: royalblue;
+    width: 100%;
+
+    padding: 3px;
+    top: 0;
+    margin: 0;
+    margin-bottom: 0.9%;
+    text-align: center;
+}
+
+nav{
+    background-color: royalblue;
+    
+    box-shadow: 0px 3px 10px rgba(65, 105, 225, 0.75);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    margin-top: -1%;
+    text-align: center;
+}
+
+#nav > li{
+    display: inline;
+}
+
+nav button, nav a, footer a{
+    background-color: inherit;
+    border: none;
+    color: black;
+    text-decoration: none;
+
+    padding: 0 10px;
+    height: 10px;
+    margin: 0;
+}
+
+nav button:hover, nav a:hover, footer a:hover{
+    color: black;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+nav button.buttonActive, nav a.buttonActive{
+    font-weight: bold;
+}
+
+main{
+    flex: 1 0 auto;
+    background-color: white;
+}
+
+.tabs{
+    background-color: rgba(65, 105, 225, 0.125);
+    border: 0.5px solid gray;
+    border-radius: 5px !important;
+    box-shadow: 5px 5px 5px gray !important;
+
+    padding: 2% 4%;
+    margin: 3em auto;
+    width: 70%;
+}
+
+main h1{
+    text-align: center;
+    font-weight: 300;
+}
+
+p{
+    text-align: justify;
+}
+
+img{
+    height: 80%;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+footer {
+    flex-shrink: 0;
+    background-color: royalblue;
+    color: black;
+    text-align: center;
+    height: 25px;
+    padding-top: 3px;
+}
+
+footer h3{
+    font-size: medium;
+    margin: 0 10px;
+    height: 10px;
+}
+
+input, button, select{
+    box-shadow: 5px 5px 5px gray;
+}
+
+input:hover, button:hover, select:hover{
+    box-shadow: 0px 0px 5px gray;
+}
+
+.nao-medico-form{
+    display: none;
+}

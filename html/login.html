@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Clínica</title>
+        <link rel="stylesheet" href="../css/index.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <style>
+            #msg-alerta{
+                display: none;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 1 16 16">
+                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                </svg>
+                Recanto do Sol
+            </h1> 
+        </header>
+
+        <nav>
+
+            <section>
+                <ul id="nav">
+                    <li> <a href="../index.html"> Home </a> </li>
+                    <li> <a href="galeria.html"> Galeria </a> </li>
+                    <li> <a href="novoendereco.html"> Novo Endereço </a> </li>
+                    <li> <a href="agendamento.html"> Agendamento</a> </li>
+                    <li> <a href="login.html"> <b>Login</b> </a> </li>
+                </ul>
+            </section>
+
+        </nav>
+
+        <main>
+
+            <section class="tabs">
+                <h1>Login</h1>
+                <hr />
+
+                <form>
+                    <div class="row gy-4 gx-5 m-4 p-2 justify-content-md-center">
+                        <div class="col-sm-8">
+                            <label for="inputEmail" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="inputEmail" name="inputEmail">
+                        </div>
+            
+                        <div class="col-sm-8">
+                            <label for="inputSenha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="inputSenha" name="inputSenha">
+                        </div>
+
+                        <div class="col-sm-8 d-grid">
+                            <button type="submit" class="btn btn-primary" id="btn-login" onclick="enviaForm()">
+                                Entrar
+                            </button>
+                        </div>
+            
+                    </div>
+                    
+                    <div class="alert alert-warning alert-dismissible" role="alert" id="msg-alerta">
+                        <p>Dados incorretos! Por favor, tente novamente.</p>
+                    </div>
+                </form>
+
+                
+
+            </section>
+
+        </main>
+
+        <footer>
+
+            <h3>Copyright © 2022 - Todos os direitos reservados -<a href="#">Clinica.com</a> </h3>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script>
+
+            function enviaForm(){
+                let xhr = new XMLHttpRequest();
+                const form = document.querySelector("form");
+                const msgAlerta = document.getElementById("msg-alerta");
+
+                // O formulário será enviado como um objeto FormData
+                // A requisição deve utilizar o método POST
+                xhr.open("POST", "../php/login.php", true);
+                xhr.onload = function () {
+                    // verifica o código de status retornado pelo servidor
+                    if (xhr.status != 200) {
+                        console.error("Falha inesperada: " + xhr.responseText);
+                        return;
+                    }
+
+                    // converte a string JSON para objeto JS
+                    try {
+                        var response = JSON.parse(xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("String JSON inválida: " + xhr.responseText);
+                        return;
+                    }
+                    console.log(response.detail);
+                    // utiliza os dados da resposta
+                    if (response.success)
+                        window.location = response.detail;
+                    else {
+                        msgAlerta.style.display = 'block';
+                        form.inputSenha.value = "";
+                        form.inputSenha.focus();
+                    }
+                }
+
+                xhr.onerror = function () {
+                    console.error("Erro de rede - requisição não finalizada");
+                };
+
+                // envia o formulário de login utilizando a interface FormData
+                xhr.send(new FormData(form));
+            }
+
+        </script>
+    </body>
+
+</html>

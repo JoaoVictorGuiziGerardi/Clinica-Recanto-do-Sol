@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Clínica</title>
+        <link rel="stylesheet" href="../css/index.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 1 16 16">
+                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                </svg>
+                Recanto do Sol
+            </h1> 
+        </header>
+
+        <nav>
+
+            <section>
+                <ul id="nav">
+                    <li> <a href="../index.html"> Home </a> </li>
+                    <li> <a href="galeria.html"> Galeria </a> </li>
+                    <li> <a href="novoendereco.html"> Novo Endereço </a> </li>
+                    <li> <a href="agendamento.html"> <b>Agendamento</b> </a> </li>
+                    <li> <a href="login.html"> Login </a> </li>
+                </ul>
+            </section>
+
+        </nav>
+
+        <main>
+
+            <section class="tabs">
+                <h1>Agendamento de Consulta</h1>
+                <hr />
+
+                <form action="../php/cadastra-agendamento.php" method="POST">
+                        
+                    <div class="row gy-4 gx-5 m-4 p-2">
+                        
+                        <div class="col-sm-12">
+                            <label for="inputNome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="inputNome" name="inputNome">
+                        </div>
+            
+                        <div class="col-sm-8">
+                            <label for="inputEmail-Agendamento" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="inputEmail-Agendamento" name="inputEmail-Agendamento">
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="inputSexo" class="form-label">Sexo</label>
+                            <input type="text" class="form-control" id="inputSexo" name="inputSexo">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="especialidade">Especialidade</label>
+                            <select name="especialidade" id="select-especialidade" class="form-select" onchange="adicionaMedico(), esvaziaData()"></select>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="medico">Médico</label>
+                            <select name="medico" id="select-medico" class="form-select" onchange="esvaziaData()"></select>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="inputData" class="form-label">Data Consulta</label>
+                            <input type="date" class="form-control" id="inputData" name="inputData" oninput="mostraHorarios()">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="horario">Horário</label>
+                            <select name="horario" id="select-horario" class="form-select mt-2">
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                Agendar
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                </svg>
+                            </button>
+                        </div>
+        
+                    </div>
+
+                        
+                </form>
+
+            </section>
+
+
+        </main>
+
+        <footer>
+
+            <h3>Copyright © 2022 - Todos os direitos reservados -<a href="#">Clinica.com</a> </h3>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script>
+
+            window.onload = function () { // Inicia a função assim que a página é carregada
+                adicionaEspecialidade();
+            }
+
+            function adicionaEspecialidade() {
+                const especialidade = document.getElementById("select-especialidade");
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "../php/busca-especialidade.php", true);
+
+                xhr.onload = function () {
+              
+                    // verifica o código de status retornado pelo servidor
+                    if (xhr.status != 200) {
+                        console.error("Falha inesperada: " + xhr.responseText);
+                        return;
+                    }
+
+                    // converte a string JSON para objeto JavaScript
+                    try {
+                        var esp = JSON.parse(xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("String JSON inválida: " + xhr.responseText);
+                        return;
+                    }
+                
+                    especialidade.innerHTML = "";
+                    var option = new Array(esp.length);
+
+                    option[0] = document.createElement("option");
+                    option[0].text = "Sel.";
+                    option[0].value = "selecione";
+
+                    especialidade.add(option[0]);
+
+                    for (var i = 0; i < esp.length; i++){
+                        option[i] = document.createElement("option");
+
+                        option[i].text = esp[i].especialidade;
+                        option[i].value = esp[i].especialidade;
+
+                        var check = false;
+
+                        for (var j = 0; j < i; j++){
+                            if (option[i].text == option[j].text){
+                                check = true;
+                                break;
+                            }
+                        }
+
+                        if (check == false)
+                            especialidade.add(option[i]);
+                    }
+
+                }
+
+                xhr.onerror = function () {
+                    console.error("Erro de rede - requisição não finalizada");
+                };
+
+                xhr.send();
+            }
+
+            function adicionaMedico(){
+                const especialidade = document.getElementById("select-especialidade");
+                var esp = especialidade.value;
+                
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "../php/busca-medicos.php?especialidade=" + esp, true);
+
+                xhr.onload = function () {
+              
+                    // verifica o código de status retornado pelo servidor
+                    if (xhr.status != 200) {
+                        console.error("Falha inesperada: " + xhr.responseText);
+                        return;
+                    }
+
+                    // converte a string JSON para objeto JavaScript
+                    try {
+                        var medico = JSON.parse(xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("String JSON inválida: " + xhr.responseText);
+                        return;
+                    }
+
+                    var campo_medico = document.getElementById("select-medico");                
+                    campo_medico.innerHTML = "";
+                    var option = new Array(medico.length);
+
+                    for (var i = 0; i < medico.length; i++){
+                        option[i] = document.createElement("option");
+                        option[i].text = medico[i].nome;
+                        option[i].value = medico[i].id;
+    
+                        campo_medico.add(option[i]);
+                    }
+
+                }
+
+                xhr.onerror = function () {
+                    console.error("Erro de rede - requisição não finalizada");
+                };
+
+                xhr.send();
+            }
+
+            function esvaziaData(){
+                document.getElementById("inputData").value = '';
+            }
+
+            function mostraHorarios(){
+                const data_consulta = document.getElementById("inputData");
+                const medico = document.getElementById("select-medico");
+                var id_medico = medico.value;
+                var data = data_consulta.value;
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "../php/busca-horarios.php?data_consulta=" + data + "&id_medico=" + id_medico, true);
+
+                xhr.onload = function () {
+              
+                    // verifica o código de status retornado pelo servidor
+                    if (xhr.status != 200) {
+                        console.error("Falha inesperada: " + xhr.responseText);
+                        return;
+                    }
+
+                    // converte a string JSON para objeto JavaScript
+                    try {
+                        var horarios_indisponiveis = JSON.parse(xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("String JSON inválida: " + xhr.responseText);
+                        return;
+                    }
+
+                    var campo_horarios = document.getElementById("select-horario");
+                    campo_horarios.innerHTML = "";
+                    var option = new Array(10);
+                    var horas = 8;
+                    
+                    if (horarios_indisponiveis.length == 0){
+                        
+                        for (var i = 0; i < 10; i++){
+                            option[i] = document.createElement("option");
+                            option[i].text = horas + ":00";
+
+                            if (horas < 10){
+                                option[i].value = "0" + horas + ":00:00";
+                            } else {
+                                option[i].value = horas + ":00:00";
+                            }
+    
+                            campo_horarios.add(option[i]);
+
+                           horas++;
+                        }
+                    } else {
+
+                        console.log(horarios_indisponiveis);
+
+                        for (var i = 0; i < 10; i++) {
+                            var text = horas + ":00";
+                            var value;
+
+                            if (horas < 10)
+                                value = "0" + horas + ":00:00";
+                            else
+                                value = horas + ":00:00";
+
+                            var check = 0;
+
+                            for (var j = 0; j < horarios_indisponiveis.length; j++){
+                                if (value == horarios_indisponiveis[j].horario){
+                                    check = 1;
+                                }
+                            }
+
+                            option[i] = document.createElement("option");
+                            option[i].text = text;
+                            option[i].value = value;
+
+                            if (check == 0)
+                                campo_horarios.add(option[i]);
+
+                            horas++;
+                        }
+                    }
+                    
+                }
+
+                xhr.onerror = function () {
+                    console.error("Erro de rede - requisição não finalizada");
+                };
+
+                xhr.send();
+            }
+
+        </script>
+
+    </body>
+
+</html>
